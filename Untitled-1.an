@@ -1,0 +1,50 @@
+
+{
+
+	"HTMLFileName":"Untitled-1.html",
+	"pref__general__AutoKeyframeProperties":"true",
+	"ModelData":"{\
+\"stage\": {\
+   \"timelines\": {\
+      \"Default Timeline\": {\
+      }\
+   }},\
+\"Preloader\": {\
+   \"timelines\": {\
+\
+   }},\
+\"Down-level\": {\
+   \"timelines\": {\
+\
+   }}\
+}",
+	"pref__general__FilterNonAnimatedElements":"false",
+	"pref__general__AutoKeyframePropertiesArmed":"false",
+	"symbol_stage":{
+		"element_${Text}":{
+			"timelineColor2":"0x81aa62",
+			"timelineColor3":"0x5b6c4d",
+			"timelineColor":"0x91c767",
+			"animationEnabled":"true",
+			"invisible":"false"},
+		"dummyStageParentWidth":"550px",
+		"element_${Stage}":{
+			"timelineColor2":"0xcbbd71",
+			"timelineColor3":"0x7b7652",
+			"invisible":"false",
+			"timelineColor":"0xeedf79"},
+		"defaultStageParentWidth":"550px",
+		"dummyStageParentHeight":"400px",
+		"defaultStageParentHeight":"400px"},
+	"TransitionIdCounter":"5",
+	"CompZoomFactor":"100",
+	"expanded:images/index/u34.jpg":"nil",
+	"pixelsPerMs":"0.2",
+	"pref__general__GenerateSmoothTransitions":"true",
+	"stage-Default Timeline_mark_ms":"-1",
+	"usedBOM":"false",
+	"expanded:images/index/u8.jpg":"nil",
+	"stage-Default Timeline_playhead_ms":"250",
+	"StageZoomFactor":"50",
+	"viewStartY":"0",
+	"nextElementColorIndex":"3"}

@@ -1,0 +1,67 @@
+body{
+    margin: 0;
+    background-color: #4D4D4D;
+}
+
+.navigation{
+  /* background-color: #2A2A2A; */
+  margin: 0 auto 0;
+  width: auto;
+  height: 50px;
+  display: block;
+}
+
+.Logo{
+  position: absolute;
+    padding: 10px;;
+}
+
+object.Logo {}
+
+.Tittle{
+  position: absolute;
+  width: auto;
+  height: 50px;
+  display: inline-flex;
+  float: right;
+  padding: 0;
+  right: 40%;
+}
+
+p{
+    width: 100px;
+    height: 50px;
+    background-color: #FF6C6C;
+    color: #ffffff;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: lighter;
+    line-height: 50px;
+    margin: 0 auto 0;
+    text-align: center;
+    float: right;
+}
+
+.Search{
+    width: 264px;
+    font-family: Arial;
+    height: 50px;
+    background : #191919;
+    font-size : 18px;
+    color : #A6A6A6;
+    line-height: 50px;
+    padding-left: 10px;
+    position: absolute;
+    right: 24px;
+    margin: auto;
+}
+
+
+.nav-bg {
+    width: auto;
+    background-color: #2A2A2A;
+}
+
+object.Logo {}
+
+.Search {}

@@ -1,0 +1,89 @@
+html {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+display: flex;
+flex-flow: row nowrap;
+height: 100%;
+width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.editor {
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+textarea#mdbody {
+  margin: 0;
+  padding: 20px;
+  width: 50%;
+  height: 100%;
+  background-color: #212121;
+  color: #D2D2D2;
+}
+
+div#preview {
+    margin: 0;
+    padding: 20px;
+    width: 50%;
+    height: 100%;
+    background-color: #F9F9F9;
+    overflow: scroll;
+}
+
+.language-math {
+  /* overflow: initial; */
+}
+
+pre {
+    overflow: hidden;
+}
+
+
+.toolbar {
+    background-color: #37BEEF;
+    height: 60px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: inherit;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+
+#preview>h1 {
+    font-size: 40px;
+}
+
+
+a.toolbar-icon {
+    margin: 0 10px 0;
+    font-family: FontAwesome;
+    color: white;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+
+.toolbar-icon {
+    color: white;
+    font-size: 24px;
+    line-height: 50px;
+    margin: 0 10px 0;
+}

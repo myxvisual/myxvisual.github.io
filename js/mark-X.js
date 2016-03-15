@@ -18,7 +18,7 @@ function renderMD(data) {
     return katex.renderToString(p1);
   }
   var mdData = (md.render(data)).toString();
-  content.innerHTML = mdData;
+  preview.innerHTML = mdData;
 
   var maths = $('.language-math');
   for (var i = 0; i < maths.length; i++) {

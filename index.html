@@ -3,31 +3,16 @@
 <head>
   <meta charset="utf-8"/>
   <title>Marked in the browser</title>
-  <link rel="stylesheet" href="material-design-lite.min.css" media="screen" title="no title" charset="utf-8">
-  <link href="bootstrap.min.css" rel="stylesheet"></link>
+  <link rel="stylesheet" href="markdown.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
-  <script src="markdown-it.min.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/markdown-it/6.0.0/markdown-it.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
 </head>
 <body>
-  <textarea id="mdbody" contenteditable="true" onkeyup="renderMD(this.value)"></textarea>
-  <button type="button" name="button" onclick="renderMD()">get markdown</button>
-  <div id="content">${}$</div>
-  <script>
-  var md = window.markdownit();
-  function renderMD(data) {
-    function replacer(match, p1, p2, offset, string) {
-      return katex.renderToString(p1) + p2;
-    }
-    var mdData = (md.render(data)).toString();
-    var content = document.getElementById('content');
-    var findMath = /\$([^\$]+)\$(\n*)(\s*)/g;
-    mewData = mdData.replace(findMath, replacer);
-    //content.match(findMath);
-    content.innerHTML = mewData;
-  }
-  </script>
-  <p>$E=mc^2$</p>
-  <p>When `a != 0`, there are two solutions to `ax^2 + bx + c = 0` and they are</p>
+  <div class="editor">
+    <textarea id="mdbody" contenteditable="true" onkeyup="renderMD(this.value)" spellcheck="false"></textarea>
+    <div id="content"></div>
+  </div>
+  <script src="mark-X.js" charset="utf-8"></script>
 </body>
 </html>

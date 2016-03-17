@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>Markedown-X</title>
+  <link rel="stylesheet" href="./css/highlight.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="./css/markdown.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
   <link rel="stylesheet" href="./css/font-awesome.css" media="screen" title="no title" charset="utf-8">
@@ -44,10 +45,11 @@
       </div>
     </div>
     <div class="container">
-      <textarea id="mdbody" contenteditable="true" onkeyup="renderMD(this.value)" onscroll="syncScroll(this)" spellcheck="false"></textarea>
-      <div id="preview"></div>
+      <textarea id="mdbody" class="language-markdown" contenteditable="true" onkeyup="renderMD(this.value)" onscroll="syncScroll(this)" spellcheck="false"></textarea>
+      <div id="preview"><pre><code class="language-javascript"></code></pre></div>
     </div>
   </div>
   <script src="./js/mark-X.js" charset="utf-8"></script>
+  <script src="./js/highlight.js"></script>
 </body>
 </html>

@@ -1,4 +1,24 @@
-var md = window.markdownit().use(window.markdownitCheckbox);
+var languageOverrides = {
+  js: 'javascript',
+  html: 'xml',
+  markdown: 'markdown',
+};
+
+var md = window.markdownit({
+      html: true,
+      linkify: true,
+      highlight: function(code, lang){
+        if(languageOverrides[lang]) lang = languageOverrides[lang];
+        if(lang && hljs.getLanguage(lang)){
+          try {
+            return hljs.highlight(lang, code).value;
+          }catch(e){}
+        }
+        return '';
+      }
+    })
+      .use(window.markdownitCheckbox);
+
 function $(element) {
   var selector = element.match(/([.#])*(.+)/);
   switch (selector[1]) {

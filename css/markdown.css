@@ -5,10 +5,14 @@ html {
 }
 
 .container {
-display: flex;
-flex-flow: row nowrap;
-height: 90%;
-width: 100%;
+
+display: flex;
+
+flex-flow: row nowrap;
+
+height: 90%;
+
+width: 100%;
 }
 
 body {
@@ -37,8 +41,8 @@ textarea#mdbody {
   width: 50%;
   height: 100%;
   background-color: #212121;
-  font-size: 12px;
-  color: #E6E6E6;
+  font-size: 15px;
+  color: #FFFFFF;
 }
 
 
@@ -57,7 +61,7 @@ pre {
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: inherit;
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 .toolbar-icon {
@@ -93,7 +97,7 @@ div#preview {
     font-family: "Hiragino Sans GB", "Microsoft YaHei",             "WenQuanYi Micro Hei", sans-serif;
     color: #333333;
     letter-spacing: 0px;
-    margin: 0;
+    margin: 0px 0 800px;
     padding: 20px;
     width: 50%;
     height: 100%;
@@ -106,6 +110,7 @@ div#preview {
 #preview h1 {
     font-size: 32px;
     color: #2D2D2D;
+    font-weight: 500;
 }
 
 
@@ -124,23 +129,28 @@ div#preview {
 div#preview h2 {
     font-size: 26px;
     color: black;
+    font-weight: 500;
 }
 
 
 div#preview h3 {
     font-size: 22px;
+    font-weight: 500;
 }
 
 div#preview h4 {
     font-size: 18px;
+    font-weight: 500;
 }
 
 div#preview h5 {
     font-size: 16px;
+    font-weight: 500;
 }
 
 div#preview h6 {
     font-size: 12px;
+    font-weight: 500;
 }
 
 #preview hr {margin-top: 20px;margin-bottom: 20px;border: 0;border-top: 3px solid #F7F7F7;}
@@ -156,12 +166,20 @@ div#preview h6 {
 
 #preview .language-math {
     font-size: 24px;
-    color: #545454;
+    color: #4A4A4A;
 }
 
 #preview pre {
+    margin: 6px 0px 6px;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    padding: 20px;
+    width: 100%;
+}
+
+.language-math pre {
     margin: 6px 0 6px;
-    background-color: #F9F9F9;
+    background-color: #191919;
     border-radius: 4px;
     padding: 10px;
     width: 100%;

@@ -6,8 +6,9 @@
   <link rel="stylesheet" href="./css/markdown.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
   <link rel="stylesheet" href="./css/font-awesome.css" media="screen" title="no title" charset="utf-8">
-  <script src="https://cdn.jsdelivr.net/markdown-it/6.0.0/markdown-it.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="./js/markdown-it.min.js" charset="utf-8"></script>
+  <script src="./js/katex.min.js"></script>
+  <script src="./js/markdown-it-checkbox.min.js"></script>
 </head>
 <body>
   <div class="editor">
@@ -17,7 +18,6 @@
           <i class="fa fa-bold" onmousedown="createString('bold');iconDown(this)" onmouseup="iconUp(this)"></i>
           <i class="fa fa-italic" onmousedown="createString('italic');iconDown(this)" onmouseup="iconUp(this)"></i>
           <i class="fa fa-strikethrough" onmousedown="createString('strikethrough');iconDown(this)" onmouseup="iconUp(this)"></i>
-          <i class="fa fa-underline" onmousedown="createString('underline');iconDown(this)" onmouseup="iconUp(this)"></i>
         </div>
         <div class="toolbar-group-2">
           <i class="fa fa-header" onmousedown="createString('h1');iconDown(this)" onmouseup="iconUp(this)">1</i>
@@ -28,10 +28,18 @@
           <i class="fa fa-header" onmousedown="createString('h6');iconDown(this)" onmouseup="iconUp(this)">6</i>
         </div>
         <div class="toolbar-group-3">
-          <i class="fa fa-table toolbar-group-3-item" onmousedown="createString('h1');iconDown(this)" onmouseup="iconUp(this)"></i>
-          <i class="fa fa-file-image-o toolbar-group-3-item" onmousedown="createString('h2');iconDown(this)" onmouseup="iconUp(this)"></i>
-          <i class="fa fa-code toolbar-group-3-item" onmousedown="createString('h3');iconDown(this)" onmouseup="iconUp(this)"></i>
-          <i class="fa fa-link toolbar-group-3-item" onmousedown="createString('h4');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-table" onmousedown="createString('table');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-file-image-o" onmousedown="createString('image');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-code" onmousedown="createString('code');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-link" onmousedown="createString('link');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-superscript" onmousedown="createString('math');iconDown(this)" onmouseup="iconUp(this)"></i>
+        </div>
+        <div class="toolbar-group-3">
+          <i class="fa fa-minus" onmousedown="createString('horizontal');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-quote-left" onmousedown="createString('quote');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-list-ul" onmousedown="createString('list');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-square-o" onmousedown="createString('unchecked');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-check-square-o" onmousedown="createString('checked');iconDown(this)" onmouseup="iconUp(this)"></i>
         </div>
       </div>
     </div>

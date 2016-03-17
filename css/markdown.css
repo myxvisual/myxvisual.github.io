@@ -1,0 +1,209 @@
+html {
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+
+.container {
+display: flex;
+flex-flow: row nowrap;
+height: 90%;
+width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.editor {
+    padding: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+textarea#mdbody {
+  font-family: "Hiragino Sans GB", "Microsoft YaHei",             "WenQuanYi Micro Hei", sans-serif;
+  margin: 0;
+  display: flex;
+  padding: 20px;
+  width: 50%;
+  height: 100%;
+  background-color: #212121;
+  font-size: 12px;
+  color: #E6E6E6;
+}
+
+
+.language-math {
+  /* overflow: initial; */
+}
+
+pre {
+    overflow: hidden;
+}
+
+.toolbar {
+    background-color: #37BEEF;
+    height: 60px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: inherit;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.toolbar-icon {
+    display: flex;
+    flex-flow: row nowrap;
+    color: #ffffff;
+    font-size: 24px;
+    line-height: 50px;
+    margin: 0 20px 0;
+}
+
+
+.toolbar-group-1 {}
+
+.toolbar-group-2 {
+}
+
+
+.toolbar-group-2 {
+    font-size: 15px;
+    margin-left: 30px;
+}
+
+.toolbar-group-3 {
+    margin-left: 30px;
+    display: block;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+
+div#preview {
+    font-family: "Hiragino Sans GB", "Microsoft YaHei",             "WenQuanYi Micro Hei", sans-serif;
+    color: #333333;
+    letter-spacing: 0px;
+    margin: 0;
+    padding: 20px;
+    width: 50%;
+    height: 100%;
+    background-color: #FFFFFF;
+    overflow: scroll;
+}
+
+#preview img {max-width: 100%;}
+
+#preview h1 {
+    font-size: 32px;
+    color: #2D2D2D;
+}
+
+
+#preview p {
+    font-size: 14px;
+    letter-spacing: 0px;
+}
+
+#preview a {
+    font-size: 16px;
+    color: #06A1FF;
+    font-weight: 500;
+}
+
+
+div#preview h2 {
+    font-size: 26px;
+    color: black;
+}
+
+
+div#preview h3 {
+    font-size: 22px;
+}
+
+div#preview h4 {
+    font-size: 18px;
+}
+
+div#preview h5 {
+    font-size: 16px;
+}
+
+div#preview h6 {
+    font-size: 12px;
+}
+
+#preview hr {margin-top: 20px;margin-bottom: 20px;border: 0;border-top: 3px solid #F7F7F7;}
+
+#preview li {font-size: 14px;}
+
+
+#preview blockquote {
+    border-left: 6px solid #C5ECBE;
+    padding-left: 15px;
+    margin: 32px 6px 32px;
+}
+
+#preview .language-math {
+    font-size: 24px;
+    color: #545454;
+}
+
+#preview pre {
+    margin: 6px 0 6px;
+    background-color: #F9F9F9;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+
+#preview li>code {
+    background-color: #C9F1FF;
+    color: #00AEE4;
+    padding: 2px;
+    margin: 3px;
+    border-radius: 2px;
+    font-weight: 800;
+}
+
+#preview p>code {
+    background-color: #FFE4D8;
+    color: #FF9261;
+    padding: 2px;
+    margin: 3px;
+    border-radius: 2px;
+    font-weight: 800;
+}
+
+#preview table, td, th {
+    border-collapse: collapse;
+    background-color: #C8F1FF;
+    border: 1px solid white;
+    padding: 10px;
+    margin: 20px 0 20px;
+}
+
+
+#preview th {
+  vertical-align: middle;
+  border-collapse: collapse;
+  padding: 12px;
+  color: white;
+  background-color: #37BEEF;
+}
+
+#preview input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+}

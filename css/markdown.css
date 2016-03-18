@@ -33,12 +33,12 @@ textarea#mdbody {
   font-family: "Hiragino Sans GB", "Microsoft YaHei",             "WenQuanYi Micro Hei", sans-serif;
   margin: 0;
   display: flex;
-  padding: 20px;
+  padding: 20px 20px 80px;
   width: 50%;
   height: 100%;
-  background-color: #212121;
-  font-size: 12px;
-  color: #E6E6E6;
+  background-color: #242627;
+  font-size: 14px;
+  color: #3CEBFF;
 }
 
 
@@ -57,7 +57,7 @@ pre {
     flex-flow: row nowrap;
     justify-content: flex-start;
     align-items: inherit;
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 .toolbar-icon {
@@ -93,12 +93,13 @@ div#preview {
     font-family: "Hiragino Sans GB", "Microsoft YaHei",             "WenQuanYi Micro Hei", sans-serif;
     color: #333333;
     letter-spacing: 0px;
-    margin: 0;
+    margin: 0px 0 800px;
     padding: 20px;
     width: 50%;
     height: 100%;
     background-color: #FFFFFF;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #preview img {max-width: 100%;}
@@ -106,6 +107,8 @@ div#preview {
 #preview h1 {
     font-size: 32px;
     color: #2D2D2D;
+    font-weight: 500;
+    margin: 0 0 30px;
 }
 
 
@@ -124,26 +127,31 @@ div#preview {
 div#preview h2 {
     font-size: 26px;
     color: black;
+    font-weight: 500;
 }
 
 
 div#preview h3 {
     font-size: 22px;
+    font-weight: 500;
 }
 
 div#preview h4 {
     font-size: 18px;
+    font-weight: 500;
 }
 
 div#preview h5 {
     font-size: 16px;
+    font-weight: 500;
 }
 
 div#preview h6 {
     font-size: 12px;
+    font-weight: 500;
 }
 
-#preview hr {margin-top: 20px;margin-bottom: 20px;border: 0;border-top: 3px solid #F7F7F7;}
+#preview hr {margin-top: 5px;margin-bottom: 20px;border: 0;border-top: 3px solid #F7F7F7;}
 
 #preview li {font-size: 14px;}
 
@@ -151,17 +159,25 @@ div#preview h6 {
 #preview blockquote {
     border-left: 6px solid #C5ECBE;
     padding-left: 15px;
-    margin: 32px 6px 32px;
+    margin: 20px 0px 35px;
 }
 
 #preview .language-math {
     font-size: 24px;
-    color: #545454;
+    color: #4A4A4A;
 }
 
 #preview pre {
+    margin: 6px 0px 6px;
+    background-color: #F5F5F5;
+    border-radius: 4px;
+    padding: 20px;
+    width: 100%;
+}
+
+.language-math pre {
     margin: 6px 0 6px;
-    background-color: #F9F9F9;
+    background-color: #191919;
     border-radius: 4px;
     padding: 10px;
     width: 100%;
@@ -206,4 +222,10 @@ div#preview h6 {
     width: 18px;
     height: 18px;
     vertical-align: middle;
+    opacity: .5;
+}
+
+
+#preview ul {
+    margin: 0 0 30px;
 }

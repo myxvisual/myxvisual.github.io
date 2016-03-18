@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Markedown-X</title>
+  <link rel="stylesheet" href="./css/highlight.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="./css/markdown.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <link rel="stylesheet" href="./css/font-awesome.css" media="screen" title="no title" charset="utf-8">
+  <script src="./js/markdown-it.min.js" charset="utf-8"></script>
+  <script src="./js/katex.min.js"></script>
+  <script src="./js/markdown-it-checkbox.min.js"></script>
+</head>
+<body>
+  <div class="editor">
+    <div class="toolbar">
+      <div class="toolbar-icon">
+        <div class="toolbar-group-1">
+          <i class="fa fa-bold" onmousedown="createString('bold');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-italic" onmousedown="createString('italic');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-strikethrough" onmousedown="createString('strikethrough');iconDown(this)" onmouseup="iconUp(this)"></i>
+        </div>
+        <div class="toolbar-group-2">
+          <i class="fa fa-header" onmousedown="createString('h1');iconDown(this)" onmouseup="iconUp(this)">1</i>
+          <i class="fa fa-header" onmousedown="createString('h2');iconDown(this)" onmouseup="iconUp(this)">2</i>
+          <i class="fa fa-header" onmousedown="createString('h3');iconDown(this)" onmouseup="iconUp(this)">3</i>
+          <i class="fa fa-header" onmousedown="createString('h4');iconDown(this)" onmouseup="iconUp(this)">4</i>
+          <i class="fa fa-header" onmousedown="createString('h5');iconDown(this)" onmouseup="iconUp(this)">5</i>
+          <i class="fa fa-header" onmousedown="createString('h6');iconDown(this)" onmouseup="iconUp(this)">6</i>
+        </div>
+        <div class="toolbar-group-3">
+          <i class="fa fa-table" onmousedown="createString('table');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-file-image-o" onmousedown="createString('image');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-code" onmousedown="createString('code');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-link" onmousedown="createString('link');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-superscript" onmousedown="createString('math');iconDown(this)" onmouseup="iconUp(this)"></i>
+        </div>
+        <div class="toolbar-group-3">
+          <i class="fa fa-minus" onmousedown="createString('horizontal');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-quote-left" onmousedown="createString('quote');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-list-ul" onmousedown="createString('list');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-square-o" onmousedown="createString('unchecked');iconDown(this)" onmouseup="iconUp(this)"></i>
+          <i class="fa fa-check-square-o" onmousedown="createString('checked');iconDown(this)" onmouseup="iconUp(this)"></i>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <textarea id="mdbody" class="language-markdown" contenteditable="true" onkeyup="renderMD(this.value)" onscroll="syncScroll(this)" spellcheck="false"></textarea>
+      <div id="preview"><pre><code class="language-javascript"></code></pre></div>
+    </div>
+  </div>
+  <script src="./js/mark-X.js" charset="utf-8"></script>
+  <script src="./js/highlight.js"></script>
+</body>
+</html>

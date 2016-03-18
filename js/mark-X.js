@@ -1,4 +1,65 @@
-var md = window.markdownit().use(window.markdownitCheckbox);
+var languageOverrides = {
+  js: 'javascript',
+  html: 'xml',
+  markdown: 'markdown',
+};
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  var xmlhttp = new XMLHttpRequest();
+  var url = 'http://myxvisual.github.io/doc/defult.md';
+  xmlhttp.onreadystatechange = function() {
+    $('#mdbody').value = xmlhttp.responseText;
+    renderMD($('#mdbody').value);
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+});
+
+function shortcutKey(key) {
+  var customKey = {
+    bold: {ctrlKey: true, shiftKey: false, altKey: false, code: 'KeyB'},
+    italic: [true, false, false, 'KeyI'],
+    strikethrough: [true, false, false, 'KeyS'],
+    h1: [true, false, false, 'KeyI'],
+    h2: [true, false, false, 'KeyI'],
+    h3: [true, false, false, 'KeyI'],
+    h4: [true, false, false, 'KeyI'],
+    h5: [true, false, false, 'KeyI'],
+    h6: [true, false, false, 'KeyI'],
+    table: [true, false, false, 'KeyI'],
+  };
+
+  // key.ctrlKey == customKey.bold.ctrlKey && key.shiftKey == customKey.bold.shiftKey && key.altKey == customKey.bold.altKey && key.code == customKey.bold.code && createString('bold');
+
+  switch (key) {
+    case (key.ctrlKey == customKey.bold.ctrlKey && key.shiftKey == customKey.bold.shiftKey && key.altKey == customKey.bold.altKey && key.code == customKey.bold.code):
+      console.log('ok');
+    break;
+
+
+    default:
+
+  }
+
+}
+
+document.addEventListener('keyup', shortcutKey, false);
+
+var md = window.markdownit({
+      html: true,
+      linkify: true,
+      highlight: function(code, lang){
+        if(languageOverrides[lang]) lang = languageOverrides[lang];
+        if(lang && hljs.getLanguage(lang)){
+          try {
+            return hljs.highlight(lang, code).value;
+          }catch(e){}
+        }
+        return '';
+      }
+    })
+      .use(window.markdownitCheckbox);
+
 function $(element) {
   var selector = element.match(/([.#])*(.+)/);
   switch (selector[1]) {
@@ -13,10 +74,23 @@ function $(element) {
   }
 }
 
+function checkedHeight() {
+  console.log('#mdbody height is ' + $('#mdbody').clientHeight);
+  console.log('#preview height is ' + $('#preview').offsetHeight);
+  console.log('#mdbody scrollTop is ' + $('#mdbody').scrollTop);
+  console.log('#preview scrollTop is ' + $('#preview').scrollTop);
+  console.log('#mdbody scrollHeight is ' + $('#mdbody').scrollHeight);
+  console.log('#preview scrollHeight is ' + $('#preview').scrollHeight);
+  console.log('#mdbody scrollBootom is ' + ($('#mdbody').scrollTop + $('#mdbody').clientHeight));
+  console.log('#preview scrollBootom is ' + ($('#preview').scrollTop + $('#preview').offsetHeight));
+}
+
 function renderMD(data) {
+  // checkedHeight();
   function replacer(match, p1, offset, string) {
     return katex.renderToString(p1);
   }
+
   var mdData = (md.render(data)).toString();
   preview.innerHTML = mdData;
 
@@ -32,8 +106,11 @@ function renderMD(data) {
 }
 
 function syncScroll(element) {
-  var scrollSynctor = (element.scrollTop + element.style.height) / element.scrollHeight;
-  $('#preview').scrollTop = ($('#preview').scrollHeight * scrollSynctor) - $('#preview').style.height;
+  element.scrollTop < ((element.scrollHeight - element.clientHeight) / 2)
+  ?
+    $('#preview').scrollTop = $('#preview').scrollHeight * element.scrollTop / element.scrollHeight
+  :
+    $('#preview').scrollTop = $('#preview').scrollHeight - $('#preview').offsetHeight - ($('#mdbody').scrollHeight - $('#mdbody').clientHeight - $('#mdbody').scrollTop) * ($('#preview').scrollHeight - $('#preview').offsetHeight) / ($('#mdbody').scrollHeight - $('#mdbody').clientHeight);
 }
 
 function createString(type) {

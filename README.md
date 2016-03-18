@@ -20,6 +20,11 @@ f(x) = \int_{-\infty}^\infty
     \,d\xi
 ```
 
+header | header
+---|---
+row1 col 1 | row1 col2
+row2 col1 | row2 col2
+
 ``` javascript
 import {x, y} as p from 'point';
 const ANSWER = 42;
@@ -35,6 +40,12 @@ class Car extends Vehicle {
       ${speed}.`;
   }
 }
+
+header | header
+---|---
+row1 col 1 | row1 col2
+row2 col1 | row2 col2
+
 
 for (let num of [1, 2, 3]) {
   console.log(num + 0b111110111);
@@ -66,3 +77,5 @@ export  $initHighlight;
 ![image](http://myxvisual.github.io/image/grass.jpg)
 
 `欢饮大家的使用`
+- [x] 代码高亮
+- [ ] 输出PDF

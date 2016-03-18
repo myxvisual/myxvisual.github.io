@@ -33,10 +33,23 @@ function $(element) {
   }
 }
 
+function checkedHeight() {
+  console.log('#mdbody height is ' + $('#mdbody').clientHeight);
+  console.log('#preview height is ' + $('#preview').offsetHeight);
+  console.log('#mdbody scrollTop is ' + $('#mdbody').scrollTop);
+  console.log('#preview scrollTop is ' + $('#preview').scrollTop);
+  console.log('#mdbody scrollHeight is ' + $('#mdbody').scrollHeight);
+  console.log('#preview scrollHeight is ' + $('#preview').scrollHeight);
+  console.log('#mdbody scrollBootom is ' + ($('#mdbody').scrollTop + $('#mdbody').clientHeight));
+  console.log('#preview scrollBootom is ' + ($('#preview').scrollTop + $('#preview').offsetHeight));
+}
+
 function renderMD(data) {
+  // checkedHeight();
   function replacer(match, p1, offset, string) {
     return katex.renderToString(p1);
   }
+
   var mdData = (md.render(data)).toString();
   preview.innerHTML = mdData;
 
@@ -52,8 +65,11 @@ function renderMD(data) {
 }
 
 function syncScroll(element) {
-  var scrollSynctor = (element.scrollTop + element.style.height) / element.scrollHeight;
-  $('#preview').scrollTop = ($('#preview').scrollHeight * scrollSynctor) - $('#preview').style.height;
+  element.scrollTop < element.scrollHeight / 2
+  ?
+    $('#preview').scrollTop = $('#preview').scrollHeight * element.scrollTop / element.scrollHeight
+  :
+    $('#preview').scrollTop = ($('#preview').scrollHeight * ((element.scrollTop + $('#preview').clientHeight) / element.scrollHeight)) - $('#preview').offsetHeight;
 }
 
 function createString(type) {

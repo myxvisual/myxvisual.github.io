@@ -5,14 +5,10 @@ html {
 }
 
 .container {
-
-display: flex;
-
-flex-flow: row nowrap;
-
-height: 90%;
-
-width: 100%;
+display: flex;
+flex-flow: row nowrap;
+height: 90%;
+width: 100%;
 }
 
 body {
@@ -37,12 +33,12 @@ textarea#mdbody {
   font-family: "Hiragino Sans GB", "Microsoft YaHei",             "WenQuanYi Micro Hei", sans-serif;
   margin: 0;
   display: flex;
-  padding: 20px;
+  padding: 20px 20px 80px;
   width: 50%;
   height: 100%;
-  background-color: #212121;
+  background-color: #242627;
   font-size: 15px;
-  color: #FFFFFF;
+  color: #3CEBFF;
 }
 
 
@@ -102,7 +98,8 @@ div#preview {
     width: 50%;
     height: 100%;
     background-color: #FFFFFF;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #preview img {max-width: 100%;}
@@ -111,6 +108,7 @@ div#preview {
     font-size: 32px;
     color: #2D2D2D;
     font-weight: 500;
+    margin: 0 0 30px;
 }
 
 
@@ -153,7 +151,7 @@ div#preview h6 {
     font-weight: 500;
 }
 
-#preview hr {margin-top: 20px;margin-bottom: 20px;border: 0;border-top: 3px solid #F7F7F7;}
+#preview hr {margin-top: 5px;margin-bottom: 20px;border: 0;border-top: 3px solid #F7F7F7;}
 
 #preview li {font-size: 14px;}
 
@@ -161,7 +159,7 @@ div#preview h6 {
 #preview blockquote {
     border-left: 6px solid #C5ECBE;
     padding-left: 15px;
-    margin: 32px 6px 32px;
+    margin: 20px 0px 35px;
 }
 
 #preview .language-math {
@@ -224,4 +222,10 @@ div#preview h6 {
     width: 18px;
     height: 18px;
     vertical-align: middle;
+    opacity: .5;
+}
+
+
+#preview ul {
+    margin: 0 0 30px;
 }

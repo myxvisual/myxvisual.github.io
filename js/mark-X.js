@@ -4,6 +4,47 @@ var languageOverrides = {
   markdown: 'markdown',
 };
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  var xmlhttp = new XMLHttpRequest();
+  var url = 'http://myxvisual.github.io/doc/defult.md';
+  xmlhttp.onreadystatechange = function() {
+    $('#mdbody').value = xmlhttp.responseText;
+    renderMD($('#mdbody').value);
+  };
+  xmlhttp.open("GET", url, true);
+  xmlhttp.send();
+});
+
+function shortcutKey(key) {
+  var customKey = {
+    bold: {ctrlKey: true, shiftKey: false, altKey: false, code: 'KeyB'},
+    italic: [true, false, false, 'KeyI'],
+    strikethrough: [true, false, false, 'KeyS'],
+    h1: [true, false, false, 'KeyI'],
+    h2: [true, false, false, 'KeyI'],
+    h3: [true, false, false, 'KeyI'],
+    h4: [true, false, false, 'KeyI'],
+    h5: [true, false, false, 'KeyI'],
+    h6: [true, false, false, 'KeyI'],
+    table: [true, false, false, 'KeyI'],
+  };
+
+  // key.ctrlKey == customKey.bold.ctrlKey && key.shiftKey == customKey.bold.shiftKey && key.altKey == customKey.bold.altKey && key.code == customKey.bold.code && createString('bold');
+
+  switch (key) {
+    case (key.ctrlKey == customKey.bold.ctrlKey && key.shiftKey == customKey.bold.shiftKey && key.altKey == customKey.bold.altKey && key.code == customKey.bold.code):
+      console.log('ok');
+    break;
+
+
+    default:
+
+  }
+
+}
+
+document.addEventListener('keyup', shortcutKey, false);
+
 var md = window.markdownit({
       html: true,
       linkify: true,
@@ -65,11 +106,11 @@ function renderMD(data) {
 }
 
 function syncScroll(element) {
-  element.scrollTop < element.scrollHeight / 2
+  element.scrollTop < ((element.scrollHeight - element.clientHeight) / 2)
   ?
     $('#preview').scrollTop = $('#preview').scrollHeight * element.scrollTop / element.scrollHeight
   :
-    $('#preview').scrollTop = ($('#preview').scrollHeight * ((element.scrollTop + $('#preview').clientHeight) / element.scrollHeight)) - $('#preview').offsetHeight;
+    $('#preview').scrollTop = $('#preview').scrollHeight - $('#preview').offsetHeight - ($('#mdbody').scrollHeight - $('#mdbody').clientHeight - $('#mdbody').scrollTop) * ($('#preview').scrollHeight - $('#preview').offsetHeight) / ($('#mdbody').scrollHeight - $('#mdbody').clientHeight);
 }
 
 function createString(type) {

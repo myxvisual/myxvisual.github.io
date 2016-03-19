@@ -72,7 +72,7 @@ export  $initHighlight;
 ```
 
 ##### 同步滚动&实时预览
-[在线编辑器](http://myxvisual.github.io/markedown-x.html)
+[在线编辑器](http://myxvisual.github.io/markdown-x.html)
 ##### 轻松置入图片
 ![image](http://myxvisual.github.io/image/grass.jpg)
 

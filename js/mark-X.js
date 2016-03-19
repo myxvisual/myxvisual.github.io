@@ -4,6 +4,8 @@ var languageOverrides = {
   markdown: 'markdown',
 };
 
+var syncToggle = true;
+
 document.addEventListener("DOMContentLoaded", function(event) {
   var xmlhttp = new XMLHttpRequest();
   var url = 'http://myxvisual.github.io/doc/defult.md';
@@ -17,30 +19,99 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function shortcutKey(key) {
   var customKey = {
-    bold: {ctrlKey: true, shiftKey: false, altKey: false, code: 'KeyB'},
-    italic: [true, false, false, 'KeyI'],
-    strikethrough: [true, false, false, 'KeyS'],
-    h1: [true, false, false, 'KeyI'],
-    h2: [true, false, false, 'KeyI'],
-    h3: [true, false, false, 'KeyI'],
-    h4: [true, false, false, 'KeyI'],
-    h5: [true, false, false, 'KeyI'],
-    h6: [true, false, false, 'KeyI'],
-    table: [true, false, false, 'KeyI'],
+    bold: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyB'},
+    italic: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyI'},
+    strikethrough: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyS'},
+    h1: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit1'},
+    h2: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit2'},
+    h3: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit3'},
+    h4: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit4'},
+    h5: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit5'},
+    h6: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit6'},
+    table: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyT'},
+    image: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyP'},
+    code: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyC'},
+    link: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyL'},
+    math: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyM'},
+    horizontal: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyH'},
+    quote: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyQ'},
+    list: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyV'},
+    unchecked: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyU'},
+    checked: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyD'},
+    newline: {ctrlKey: false, shiftKey: false, altKey: false, code: 'Enter'},
+    softNewline: {ctrlKey: false, shiftKey: true, altKey: false, code: 'Enter'}
   };
 
-  // key.ctrlKey == customKey.bold.ctrlKey && key.shiftKey == customKey.bold.shiftKey && key.altKey == customKey.bold.altKey && key.code == customKey.bold.code && createString('bold');
-
-  switch (key) {
-    case (key.ctrlKey == customKey.bold.ctrlKey && key.shiftKey == customKey.bold.shiftKey && key.altKey == customKey.bold.altKey && key.code == customKey.bold.code):
-      console.log('ok');
+String('bold');
+  var keyCompare = JSON.stringify({ctrlKey: key.ctrlKey, shiftKey: key.shiftKey, altKey: key.altKey, code: key.code});
+  // console.log(keyCompare);
+  switch (keyCompare) {
+    case JSON.stringify(customKey.bold):
+      createString('bold');
+    break;
+    case JSON.stringify(customKey.italic):
+      createString('italic');
+    break;
+    case JSON.stringify(customKey.strikethrough):
+      createString('strikethrough');
+    break;
+    case JSON.stringify(customKey.h1):
+      createString('h1');
+    break;
+    case JSON.stringify(customKey.h2):
+      createString('h2');
+    break;
+    case JSON.stringify(customKey.h3):
+      createString('h3');
+    break;
+    case JSON.stringify(customKey.h4):
+      createString('h4');
+    break;
+    case JSON.stringify(customKey.h5):
+      createString('h5');
+    break;
+    case JSON.stringify(customKey.h6):
+      createString('h6');
+    break;
+    case JSON.stringify(customKey.table):
+      createString('table');
+    break;
+    case JSON.stringify(customKey.image):
+      createString('image');
+    break;
+    case JSON.stringify(customKey.code):
+      createString('code');
+    break;
+    case JSON.stringify(customKey.link):
+      createString('link');
+    break;
+    case JSON.stringify(customKey.math):
+      createString('math');
+    break;
+    case JSON.stringify(customKey.horizontal):
+      createString('horizontal');
+    break;
+    case JSON.stringify(customKey.quote):
+      createString('quote');
+    break;
+    case JSON.stringify(customKey.list):
+      createString('list');
+    break;
+    case JSON.stringify(customKey.unchecked):
+      createString('unchecked');
+    break;
+    case JSON.stringify(customKey.checked):
+      createString('checked');
+    break;
+    case JSON.stringify(customKey.newline):
+      $('#mdbody').scrollTop += 20;
+    break;
+    case JSON.stringify(customKey.softNewline):
+      $('#mdbody').scrollTop += 20;
     break;
 
-
     default:
-
   }
-
 }
 
 document.addEventListener('keyup', shortcutKey, false);
@@ -103,6 +174,7 @@ function renderMD(data) {
       maths[i].innerHTML += '\n\n' + children;
     })
   }
+  syncScroll && syncScroll($('#preview'));
 }
 
 function syncScroll(element) {
@@ -245,6 +317,9 @@ function createString(type) {
       window.setTimeout(function () {
         $('#mdbody').focus();
       }, 100);
+      window.setTimeout(function () {
+        $('#mdbody').scrollTop += 100;
+      }, 0);
       var startPos = $('#mdbody').selectionStart;
       var endPos = $('#mdbody').selectionEnd;
       $('#mdbody').value = $('#mdbody').value.substring(0, startPos)
@@ -262,7 +337,7 @@ function createString(type) {
       var startPos = $('#mdbody').selectionStart;
       var endPos = $('#mdbody').selectionEnd;
       $('#mdbody').value = $('#mdbody').value.substring(0, startPos)
-        + '![image](http://myxvisual.github.io/image/grass.jpg)\n'
+        + '![image](http://myxvisual.github.io/image/grass.jpg)'
         + $('#mdbody').value.substring(endPos, $('#mdbody').value.length);
       $('#mdbody').selectionStart = startPos + 9;
       $('#mdbody').selectionEnd = endPos + 51;
@@ -273,6 +348,9 @@ function createString(type) {
       window.setTimeout(function () {
         $('#mdbody').focus();
       }, 100);
+      window.setTimeout(function () {
+        $('#mdbody').scrollTop += 60;
+      }, 0);
       var startPos = $('#mdbody').selectionStart;
       var endPos = $('#mdbody').selectionEnd;
       $('#mdbody').value = $('#mdbody').value.substring(0, startPos)
@@ -301,6 +379,9 @@ function createString(type) {
       window.setTimeout(function () {
         $('#mdbody').focus();
       }, 100);
+      window.setTimeout(function () {
+        $('#mdbody').scrollTop += 100;
+      }, 0);
       var startPos = $('#mdbody').selectionStart;
       var endPos = $('#mdbody').selectionEnd;
       $('#mdbody').value = $('#mdbody').value.substring(0, startPos)

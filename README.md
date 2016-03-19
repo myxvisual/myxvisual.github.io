@@ -77,5 +77,13 @@ export  $initHighlight;
 ![image](http://myxvisual.github.io/image/grass.jpg)
 
 `欢饮大家的使用`
+
+### Todo List
 - [x] 代码高亮
-- [ ] 输出PDF
+- [x] 快捷键
+- [x] 快速渲染
+- [ ] 样式修正
+- [ ] 自定义同步滚动
+- [ ] 输出 PDF HTML
+- [ ] 自定义快捷键模块展示
+- [ ] React 重构

@@ -2,6 +2,7 @@
 ---
 
 # Markdown -X (New Markdwon Editor)
+![image](http://myxvisual.github.io/image/markdown-x-logo.svg)
 - **可以加粗字体，更加方便的实时预览 markdown 文档**
 - 简单输入文档
 - 支持快捷键自定义
@@ -41,12 +42,6 @@ class Car extends Vehicle {
   }
 }
 
-header | header
----|---
-row1 col 1 | row1 col2
-row2 col1 | row2 col2
-
-
 for (let num of [1, 2, 3]) {
   console.log(num + 0b111110111);
 }
@@ -72,7 +67,6 @@ export  $initHighlight;
 ```
 
 ##### 同步滚动&实时预览
-[在线编辑器](http://myxvisual.github.io/markdown-x.html)
 ##### 轻松置入图片
 ![image](http://myxvisual.github.io/image/grass.jpg)
 
@@ -87,3 +81,10 @@ export  $initHighlight;
 - [ ] 输出 PDF HTML
 - [ ] 自定义快捷键模块展示
 - [ ] React 重构
+- [ ] Custom Short KeyBoard
+
+# The Online
+
+
+
+###### ---------------[在线编辑器](http://myxvisual.github.io/markdown-x.html)---------------

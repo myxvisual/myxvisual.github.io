@@ -2,7 +2,7 @@
 ---
 
 # Markdown -X (New Markdwon Editor)
-![image](http://myxvisual.github.io/image/markdown-x-logo.svg)
+![image](http://myxvisual.github.io/image/markdown-x-banner.svg)
 - **可以加粗字体，更加方便的实时预览 markdown 文档**
 - 简单输入文档
 - 支持快捷键自定义
@@ -82,7 +82,6 @@ export  $initHighlight;
 - [ ] 自定义快捷键模块展示
 - [ ] React 重构
 - [ ] Custom Short KeyBoard
-- [ ] Build Code Mirror Editor
 
 # The Online
 

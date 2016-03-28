@@ -6,16 +6,80 @@ var languageOverrides = {
 
 var syncToggle = true;
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  var xmlhttp = new XMLHttpRequest();
-  var url = 'http://myxvisual.github.io/doc/defult.md';
-  xmlhttp.onreadystatechange = function() {
-    $('#mdbody').value = xmlhttp.responseText;
-    renderMD($('#mdbody').value);
+function showKeyboard(value) {
+  value ? $('#keyboard').style.display = 'flex': $('#keyboard').style.display = 'none';
+}
+
+function printPreview () {
+  $('#mdbody').style.display = 'none';
+  $('.toolbar')[0].style.display = 'none';
+  $('#preview').style.display = 'block';
+  $('.container')[0].style.display = $('#preview').style.scrollHeight;
+  $('#preview').style.cssText += '; margin:0 auto 0; display:block; padding:0 0; overflow-y: hidden;';
+
+  var printHTML = $('.container')[0].innerHTML;
+  var oringinalHTML = document.body.innerHTML;
+  var mdValue = $('#mdbody').value;
+  document.body.innerHTML = printHTML;
+  window.print();
+  document.body.innerHTML = oringinalHTML;
+  $('#mdbody').value = mdValue;
+
+  $('#mdbody').style.cssText = null;
+  $('#preview').style.cssText = null;
+  $('.toolbar')[0].style.cssText = null;
+}
+
+function saveMD() {
+  var blob = new Blob([$('#mdbody').value], {type: "text/plain;charset=utf-8"});
+  saveAs(blob, "README.md");
+}
+
+function changeView(value) {
+  switch (value) {
+    case '1':
+      $('#mdbody').style.cssText = null;
+      $('#preview').style.cssText = null;
+      $('#preview').style.display = 'none';
+      $('#mdbody').style.display = 'block';
+      $('#mdbody').style.cssText += '; margin:0 auto 0; display:block; padding:0 25%;';
+    break;
+
+    case '2':
+      $('#mdbody').style.cssText = null;
+      $('#preview').style.cssText = null;
+      $('#mdbody').style.display = 'none';
+      $('#preview').style.display = 'block';
+      $('#preview').style.cssText += '; margin:0 auto 0; display:block; padding:0 25%;';
+    break;
+
+    case '3':
+      $('#mdbody').style.cssText = null;
+      $('#preview').style.cssText = null;
+      $('#preview').style.display = 'block';
+      $('#mdbody').style.display = 'block';
+    break;
+    default:
   };
-  xmlhttp.open("GET", url, true);
-  xmlhttp.send();
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  var text;
+  $('#mdbody').style.opacity = '100';
+  var url = 'http://myxvisual.github.io/doc/default.md';
+  fetch(url)
+    .then( function (response) {
+      response.text().then(function (body) {
+        createEditor(body);
+      });
+    })
 });
+
+function createEditor(text) {
+  $('#mdbody').value = text;
+  //var editor = CodeMirror.fromTextArea($('#mdbody'), { lineNumbers: true });
+  renderMD($('#mdbody').value);
+}
 
 function shortcutKey(key) {
   var customKey = {
@@ -29,20 +93,19 @@ function shortcutKey(key) {
     h5: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit5'},
     h6: {ctrlKey: false, shiftKey: false, altKey: true, code: 'Digit6'},
     table: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyT'},
-    image: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyP'},
+    image: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyU'},
     code: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyC'},
     link: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyL'},
     math: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyM'},
     horizontal: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyH'},
+    inlinecode: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyR'},
     quote: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyQ'},
     list: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyV'},
     unchecked: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyU'},
     checked: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyD'},
-    newline: {ctrlKey: false, shiftKey: false, altKey: false, code: 'Enter'},
-    softNewline: {ctrlKey: false, shiftKey: true, altKey: false, code: 'Enter'}
+    printPreview: {ctrlKey: false, shiftKey: false, altKey: true, code: 'KeyP'}
   };
 
-String('bold');
   var keyCompare = JSON.stringify({ctrlKey: key.ctrlKey, shiftKey: key.shiftKey, altKey: key.altKey, code: key.code});
   // console.log(keyCompare);
   switch (keyCompare) {
@@ -90,6 +153,12 @@ String('bold');
     break;
     case JSON.stringify(customKey.horizontal):
       createString('horizontal');
+      window.setTimeout(function () {
+        $('#mdbody').scrollTop += 120;
+      }, 20);
+    break;
+    case JSON.stringify(customKey.inlinecode):
+      createString('inlinecode');
     break;
     case JSON.stringify(customKey.quote):
       createString('quote');
@@ -103,14 +172,14 @@ String('bold');
     case JSON.stringify(customKey.checked):
       createString('checked');
     break;
-    case JSON.stringify(customKey.newline):
-      $('#mdbody').scrollTop += 20;
-    break;
-    case JSON.stringify(customKey.softNewline):
-      $('#mdbody').scrollTop += 20;
+    case JSON.stringify(customKey.printPreview):
+     printPreview();
     break;
 
     default:
+  }
+  if (key.code == 'NumpadEnter' || key.code == 'Enter' ) {
+    ($('#mdbody').scrollTop += 20);
   }
 }
 
@@ -178,13 +247,16 @@ function renderMD(data) {
 }
 
 function syncScroll(element) {
-  element.scrollTop < ((element.scrollHeight - element.clientHeight) / 2)
-  ?
-    $('#preview').scrollTop = $('#preview').scrollHeight * element.scrollTop / element.scrollHeight
-  :
-    $('#preview').scrollTop = $('#preview').scrollHeight - $('#preview').offsetHeight - ($('#mdbody').scrollHeight - $('#mdbody').clientHeight - $('#mdbody').scrollTop) * ($('#preview').scrollHeight - $('#preview').offsetHeight) / ($('#mdbody').scrollHeight - $('#mdbody').clientHeight);
+  if ($('#mdbody').scrollHeight <= $('#mdbody').clientHeight) {
+    $('#preview').scrollTop = $('#preview').scrollHeight - $('#preview').offsetHeight;
+  } else {
+    element.scrollTop < ((element.scrollHeight - element.clientHeight) / 2)
+    ?
+      $('#preview').scrollTop = $('#preview').scrollHeight * element.scrollTop / element.scrollHeight
+    :
+      $('#preview').scrollTop = $('#preview').scrollHeight - $('#preview').offsetHeight - ($('#mdbody').scrollHeight - $('#mdbody').clientHeight - $('#mdbody').scrollTop) * ($('#preview').scrollHeight - $('#preview').offsetHeight) / ($('#mdbody').scrollHeight - $('#mdbody').clientHeight);
+    }
 }
-
 function createString(type) {
   switch (type) {
     case type = 'bold':
@@ -403,6 +475,20 @@ function createString(type) {
         + $('#mdbody').value.substring(endPos, $('#mdbody').value.length);
       $('#mdbody').selectionStart = startPos + 6;
       $('#mdbody').selectionEnd = endPos + 6;
+      renderMD(this.$('#mdbody').value);
+      break;
+
+    case type = 'inlinecode':
+      window.setTimeout(function () {
+        $('#mdbody').focus();
+      }, 100);
+      var startPos = $('#mdbody').selectionStart;
+      var endPos = $('#mdbody').selectionEnd;
+      $('#mdbody').value = $('#mdbody').value.substring(0, startPos)
+        + '`' + $('#mdbody').value.substring(startPos, endPos) + '`'
+        + $('#mdbody').value.substring(endPos, $('#mdbody').value.length);
+      $('#mdbody').selectionStart = startPos + 1;
+      $('#mdbody').selectionEnd = endPos + 1;
       renderMD(this.$('#mdbody').value);
       break;
 

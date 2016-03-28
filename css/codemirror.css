@@ -3,16 +3,16 @@
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: monospace;
-  height: 300px;
-  width: 50%;
-  color: black;
-  background-color: azure;
+  height: 100%;
+  width: 100%;
+  color: white;
+  background-color: white;
 }
 
 /* PADDING */
 
 .CodeMirror-lines {
-  padding: 4px 0; /* Vertical padding around content */
+  padding: 9px 0px; /* Vertical padding around content */
 }
 .CodeMirror pre {
   padding: 0 4px; /* Horizontal padding of content */
@@ -25,8 +25,7 @@
 /* GUTTER */
 
 .CodeMirror-gutters {
-  border-right: 1px solid #ddd;
-  background-color: #f7f7f7;
+  background-color: #2D2D2D;
   white-space: nowrap;
 }
 .CodeMirror-linenumbers {}
@@ -34,7 +33,7 @@
   padding: 0 3px 0 5px;
   min-width: 20px;
   text-align: right;
-  color: #999;
+  color: #808080;
   white-space: nowrap;
 }
 
@@ -97,8 +96,8 @@
 
 /* DEFAULT THEME */
 
-.cm-s-default .cm-header {color: blue;}
-.cm-s-default .cm-quote {color: #090;}
+.cm-s-default .cm-header {color: white;}
+.cm-s-default .cm-quote {color: rgb(255, 255, 255);}
 .cm-negative {color: #d44;}
 .cm-positive {color: #292;}
 .cm-header, .cm-strong {font-weight: bold;}
@@ -114,10 +113,10 @@
 .cm-s-default .cm-punctuation,
 .cm-s-default .cm-property,
 .cm-s-default .cm-operator {}
-.cm-s-default .cm-variable-2 {color: #05a;}
+.cm-s-default .cm-variable-2 {color: #00FFC6;}
 .cm-s-default .cm-variable-3 {color: #085;}
-.cm-s-default .cm-comment {color: #a50;}
-.cm-s-default .cm-string {color: #a11;}
+.cm-s-default .cm-comment {color: #78CA11;}
+.cm-s-default .cm-string {color: #FFF;}
 .cm-s-default .cm-string-2 {color: #f50;}
 .cm-s-default .cm-meta {color: #555;}
 .cm-s-default .cm-qualifier {color: #555;}
@@ -126,7 +125,7 @@
 .cm-s-default .cm-tag {color: #170;}
 .cm-s-default .cm-attribute {color: #00c;}
 .cm-s-default .cm-hr {color: #999;}
-.cm-s-default .cm-link {color: #00c;}
+.cm-s-default .cm-link {color: #8282FF;}
 
 .cm-s-default .cm-error {color: #f00;}
 .cm-invalidchar {color: #f00;}
@@ -150,7 +149,8 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   overflow: hidden;
   background: white;
   height: 100%;
-  background-color: #171717;
+  background-color: #1D1D1D;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 .CodeMirror-scroll {
@@ -164,6 +164,7 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   position: relative;
 }
 .CodeMirror-sizer {
+  font-size: 15px;
   position: relative;
   border-right: 30px solid transparent;
 }
@@ -232,10 +233,13 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
 .CodeMirror-lines {
   cursor: text;
   min-height: 1px; /* prevents collapsing before first draw */
+  color: #FFFFFF;
 }
 .CodeMirror pre {
   /* Reset some styles that the rest of the page might have set */
-  -moz-border-radius: 0; -webkit-border-radius: 0; border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
   border-width: 0;
   background: transparent;
   font-family: inherit;
@@ -244,7 +248,6 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {color: #f22;}
   white-space: pre;
   word-wrap: normal;
   line-height: inherit;
-  color: inherit;
   z-index: 2;
   position: relative;
   overflow: visible;

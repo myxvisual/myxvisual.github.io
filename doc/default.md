@@ -82,6 +82,7 @@ export  $initHighlight;
 - [ ] 自定义快捷键模块展示
 - [ ] React 重构
 - [ ] Custom Short KeyBoard
+- [ ] Build Code Mirror Editor
 
 # The Online
 

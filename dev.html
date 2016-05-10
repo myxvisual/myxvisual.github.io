@@ -2,33 +2,281 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Dev Test Template</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Shake</title>
+    <style media="screen">
+      html {
+        height: 100%;
+        font-size: 10px;
+        font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+        overflow-x: hidden;
+      }
+
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      h1 {
+        margin: 2rem;
+      }
+
+      h3 {
+        margin: .2rem 0 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      h4 {
+          font-size: 1.25rem;
+          text-align: center;
+          margin: 1rem;
+      }
+
+      h6 {
+          font-size: 1.2rem;
+      }
+
+      a {
+          margin: 1.2rem;
+          width: 90%;
+          text-align: center;
+          font-size: .2rem;
+          font-weight: 600;
+          color: white;
+          opacity: 0.9;
+      }
+
+      /*
+      Flex Layout
+      */
+
+      .full-parent {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .center {
+        margin: 0 auto;
+      }
+
+      .flex {
+        display: flex;
+        flex: 0 0 auto;
+      }
+
+      .row {
+        flex-flow: row;
+      }
+
+      .column {
+        flex-flow: column;
+      }
+
+      .row-wrap {
+        flex-flow: row wrap;
+      }
+
+      .ai-center {
+        align-items: center;
+      }
+
+      .jt-center {
+        justify-content: center;
+      }
+
+      .jt-between {
+        justify-content: space-between;
+      }
+
+      /*
+      Shake
+      */
+
+      #shake-bg {
+        background: #f04141;
+        color: white;
+      }
+
+      #shake-hand, #shake-hand object {
+        height: 22rem;
+        -webkit-animation: .35s shakeing linear infinite alternate;
+        animation-play-state: paused;
+      }
+
+      #shake-handing, #shake-handing object {
+        height: 22rem;
+        -webkit-animation: .35s shakeing linear infinite alternate;
+        animation-play-state: running;
+      }
+
+      @keyframes shakeing {
+        0% {
+          transform: scale(1) rotateZ(0deg);
+        }
+        50% {
+          transform: scale(.8) rotateZ(-20deg);
+        }
+        100% {
+          transform: scale(1.05) rotateZ(20deg);
+        }
+      }
+
+      #shake-container {
+      }
+
+      button {
+          margin: .5rem;
+          cursor: pointer;
+          transition: all .5s ease;
+          font-size: 1.8rem;
+          font-weight: bold;
+          font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+          color: #BAD200;
+          padding: .4rem 1rem;
+          border: none;
+          border-radius: .5rem;
+          background: white;
+          box-shadow: .2rem .2rem .2rem rgba(0, 0, 0, 0.14);
+          outline: none;
+      }
+
+      button:active {
+          transform: translateY(-.2rem) scale(1.05);
+          box-shadow: .4rem .4rem .4rem rgba(0, 0, 0, 0.14);
+      }
+
+      #shake-price {background: rgb(255, 241, 61);display: none;transition: all 1s linear;}
+
+      #shake-price img {
+        margin: 2rem;
+        transition: all .3s linear;
+        border-radius: 50%;
+        border: 1.2rem solid rgb(255, 255, 255);
+        max-width: 66%;
+        margin: 4%;
+        box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.16);
+      }
+
+      #shake-price img:hover {
+          box-shadow: 0 .6rem .6rem rgba(0, 0, 0, 0.16);
+          transform: translateY(-.6rem);
+      }
+
+
+      /*
+      Media Query
+      */
+
+      @media (max-height: 529px) {
+        .full-parent {
+          position: absolute;
+          height: auto;
+          width: 100%;
+        }
+
+        #shake-price {
+          display: none;
+          color: #000000;
+        }
+      }
+
+
+      #shake-price h1 {
+          color: #484848;
+          font-size: 3rem;
+          font-weight: bold;
+      }
+
+      #shake-price a {
+          color: rgba(0, 0, 0, 0.63);
+      }
+
+      #shake-price h6 {
+          opacity: .6;
+          margin: .4rem;
+      }
+    </style>
   </head>
   <body>
-    <h1 id="value"></h1>
+    <div id="shake-bg" class="flex column ai-center jt-between full-parent">
+      <h3>摇一摇香槟</h3>
+      <div id="shake-hand">
+        <object data="/image/shake.svg"></object>
+      </div>
+      <div class="flex column ai-center">
+        <h4>这个65节，和我们一起摇一摇~</h4>
+        <button id="shaker" type="button" name="button" onclick="shakeing(this)">开始摇一摇</button>
+        <h6>继续加油</h6>
+      </div>
+      <h4>还有180,888,000个精美奖品等着你！</h4>
+      <a href="">Copyright © 2010-2015 Ching International Service Pte.Ltd.All Rights Reserved</a>
+    </div>
+    <div id="shake-price" class="flex column ai-center jt-between full-parent">
+      <h1>恭喜你获得！</h1>
+      <h6>XXXX牌 2016春季朋克系棒球帽</h6>
+      <img src="http://img02.taobaocdn.com/bao/uploaded/i2/TB1qn00IFXXXXa4XXXXXXXXXXXX_!!0-item_pic.jpg" alt="">
+      <div class="flex column ai-center jt-between">
+        <button type="button" name="button">立即兑换奖品</button>
+        <button type="button" name="button" onclick="closePrice()">再来一次</button>
+      </div>
+      <h4>还有180,888,000个精美奖品等着你！</h4>
+      <a href="">Copyright © 2010-2015 Ching International Service Pte.Ltd.All Rights Reserved</a>
+    </div>
     <script type="text/javascript">
-    if(window.DeviceMotionEvent) {
-      var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
-      var x, y, z, lastX, lastY, lastZ;
-      var times = 0;
-      x = y = z = lastX = lastY = lastZ = 0;
+      function closePrice() {
+        document.getElementById('shake-price').style.display = 'none';
+      };
+      function shakeing(e) {
+        if(!e.runing) {
+          document.getElementById('shake-hand').id = 'shake-handing';
+          e.runing = true;
+          e.style.color = '';
+          e.style.color = '#F04141';
+          e.innerText = '停下来~';
+        } else {
+          setTimeout(function () {
+            document.getElementById('shake-handing').id = 'shake-hand';
+            e.runing = false;
+            e.style.color = '#BAD200';
+            e.innerText = '开始摇一摇';
+            setTimeout(function () {
+              document.getElementById('shake-price').style.display = 'flex';
+            }, 2000);
+          }, 1200);
+        }
+      };
+      function resizePage() {
+        // console.log(document.getElementById('shake-price').style, window.innerHeight)
+      };
+      window.addEventListener('resize', resizePage, false);
+      if(window.DeviceMotionEvent) {
+        var speed = 25;    // 用来判定的加速度阈值，太大了则很难触发
+        var x, y, z, lastX, lastY, lastZ;
+        var times = 0;
+        x = y = z = lastX = lastY = lastZ = 0;
 
-      window.addEventListener('devicemotion', function(event){
-          var acceleration = event.accelerationIncludingGravity;
-          x = acceleration.x;
-          y = acceleration.y;
-          z = acceleration.z;
-          if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
+        window.addEventListener('devicemotion', function(event){
+            var acceleration = event.accelerationIncludingGravity;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            if(Math.abs(x-lastX) > speed || Math.abs(y-lastY) > speed || Math.abs(z-lastZ) > speed) {
               // 用户设备摇动了，触发响应操作
               // 此处的判断依据是用户设备的加速度大于我们设置的阈值
               times += 1;
-              document.getElementById('value').innerHTML = '摇动数据为: x: ' + x + ' y: '+ y + ' z: ' + z + ' 次数: ' + times;
-          }
-          lastX = x;
-          lastY = y;
-          lastZ = z;
-      }, false);
-    }
+              // document.getElementById('value').innerHTML = '摇动数据为: x: ' + x + ' y: '+ y + ' z: ' + z + ' 次数: ' + times;
+              shakeing(document.getElementById('shaker'));
+            } else {
+              shakeing(document.getElementById('shaker'));
+            };
+            lastX = x;
+            lastY = y;
+            lastZ = z;
+        }, false);
+      }
     </script>
   </body>
 </html>

@@ -1,1 +1,0 @@
-"use strict";var e="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.min.js",c="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.1/fetch.min.js",n=function(e){var c=document.createElement("script");c.async=!1,c.src=e,c.defer=!0,document.head.appendChild(c)};"assign"in Object&&"Promise"in window&&"keys"in Object||n(e),"fetch"in window||n(c);

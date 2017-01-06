@@ -1,1 +1,1 @@
-[antcores.com](http://www.antcores.com)
+[antcores.com](antcores.com)

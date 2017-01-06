@@ -1,6 +1,6 @@
 {
-  "name": "Weather",
-  "short_name": "Weather",
+  "name": "antcores",
+  "short_name": "antcores",
   "start_url": "/",
   "icons": [{
     "src": "/static/images/icons/icon-128x128.png",

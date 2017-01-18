@@ -6,7 +6,7 @@
       <square150x150logo src="https://antcores.com/static/images/icons/icon-150x150.png"/>
       <square310x310logo src="https://antcores.com/static/images/icons/icon-310x310.png"/>
       <wide310x150logo src="https://antcores.com/static/images/icons/icon-310x150.png"/>
-      <TileColor>#d91f08</TileColor>
+      <TileColor>#191919</TileColor>
     </tile>
   </msapplication>
 </browserconfig>

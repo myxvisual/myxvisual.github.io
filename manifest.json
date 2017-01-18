@@ -27,8 +27,8 @@
       "sizes": "32x32",
       "type": "image/png"
     }],
-  "background_color": "#d23a27",
-  "theme_color": "#d91f08",
+  "background_color": "#191919",
+  "theme_color": "#000",
   "display": "fullscreen",
   "orientation": "portrait"
 }

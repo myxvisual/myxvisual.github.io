@@ -1,1 +1,80 @@
-"use strict";function e(e){var t=e.request.url;return new Promise(function(i,o){!navigator.onLine||s.test(t)||r.test(t)?caches.match(e.request).then(function(n){n?i(n):caches.open(c).then(function(n){fetch(e.request).then(function(e){n.put(t,e.clone()),i(e)})})}):caches.open(n).then(function(n){fetch(e.request).then(function(e){n.put(t,e.clone()),i(e)})})})}var t="1.1.5",n="dataCache-"+t,c="staticCache-"+t,i=["/","/init.js","/uglify.js","/index.html","/404.html","/browserconfig.xml","/favicon.ico","/manifest.json","/static/vendors.prod.dll.js"],o=/https?\:\/\/(w{3})?(\w+\.?)+(\:\d+)?\/(api|__webpack_hmr)/,s=/antcores\.com\/static/,r=/\.(jpe?g|png|gif|svg|mp4|mov|woff2?|eot|mp3|wav)/i;self.addEventListener("install",function(e){console.log("[ServiceWorker] Install"),e.waitUntil(caches.open(c).then(function(e){return console.log("[ServiceWorker] Caching app shell"),e.addAll(i)}))}),self.addEventListener("activate",function(e){return console.log("[ServiceWorker] Activate"),e.waitUntil(caches.keys().then(function(e){return Promise.all(e.map(function(e){if(e!==c&&e!==n)return caches.delete(e)}))})),self.clients.claim()}),self.addEventListener("fetch",function(t){var c=t.request.url;o.test(c)?t.respondWith(caches.open(n).then(function(e){return fetch(t.request).then(function(t){return e.put(c,t.clone()),t})})):t.respondWith(e(t))});
+"use strict";
+var VERSION = "1.1.6";
+var dataCacheName = "dataCache-" + VERSION;
+var staticCacheName = "staticCache-" + VERSION;
+var filesToCache = [
+    "/",
+    "/init.js",
+    "/uglify.js",
+    "/index.html",
+    "/404.html",
+    "/browserconfig.xml",
+    "/favicon.ico",
+    "/manifest.json",
+    "/static/vendors.dev.dll.js",
+];
+var dataUrlPattern = /https?\:\/\/(w{3})?(\w+\.?)+(\:\d+)?\/(api|__webpack_hmr)/;
+var domainToCachePattern = /antcores\.com\/static/;
+var fileToCachePtn = /\.(jpe?g|png|gif|svg|mp4|mov|woff2?|eot|mp3|wav)/i;
+function syncGetCache(e) {
+    var url = e.request.url;
+    return new Promise(function (resolve, reject) {
+        if (!navigator.onLine ||
+            domainToCachePattern.test(url) ||
+            fileToCachePtn.test(url)) {
+            caches.match(e.request).then(function (response) {
+                if (response) {
+                    resolve(response);
+                }
+                else {
+                    caches.open(staticCacheName).then(function (cache) {
+                        fetch(e.request).then(function (response) {
+                            cache.put(url, response.clone());
+                            resolve(response);
+                        });
+                    });
+                }
+            });
+        }
+        else {
+            caches.open(dataCacheName).then(function (cache) {
+                fetch(e.request).then(function (response) {
+                    cache.put(url, response.clone());
+                    resolve(response);
+                });
+            });
+        }
+    });
+}
+self.addEventListener("install", function (e) {
+    console.log("[ServiceWorker] Install");
+    e.waitUntil(caches.open(staticCacheName).then(function (cache) {
+        console.log("[ServiceWorker] Caching app shell");
+        return cache.addAll(filesToCache);
+    }));
+});
+self.addEventListener("activate", function (e) {
+    console.log("[ServiceWorker] Activate");
+    e.waitUntil(caches.keys().then(function (keyList) {
+        return Promise.all(keyList.map(function (key) {
+            if (key !== staticCacheName && key !== dataCacheName) {
+                return caches.delete(key);
+            }
+        }));
+    }));
+    return self.clients.claim();
+});
+self.addEventListener("fetch", function (e) {
+    var url = e.request.url;
+    if (dataUrlPattern.test(url)) {
+        e.respondWith(caches.open(dataCacheName).then(function (cache) {
+            return fetch(e.request).then(function (response) {
+                cache.put(url, response.clone());
+                return response;
+            });
+        }));
+    }
+    else {
+        e.respondWith(syncGetCache(e));
+    }
+});

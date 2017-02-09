@@ -1,5 +1,5 @@
 "use strict";
-var VERSION = "1.1.6";
+var VERSION = "1.1.7";
 var dataCacheName = "dataCache-" + VERSION;
 var staticCacheName = "staticCache-" + VERSION;
 var filesToCache = [

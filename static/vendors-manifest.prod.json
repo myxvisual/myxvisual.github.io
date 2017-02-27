@@ -73,7 +73,7 @@
     "../node_modules/history/lib/DOMStateStorage.js": 70,
     "../node_modules/history/lib/useBasename.js": 71,
     "../node_modules/history/lib/useQueries.js": 72,
-    "../node_modules/node-libs-browser/node_modules/process/browser.js": 73,
+    "../node_modules/process/browser.js": 73,
     "../node_modules/react-dom/lib/CSSProperty.js": 74,
     "../node_modules/react-dom/lib/CallbackQueue.js": 75,
     "../node_modules/react-dom/lib/DOMPropertyOperations.js": 76,

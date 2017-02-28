@@ -1,5 +1,5 @@
 {
-    "gatogries": [
+    "catagories": [
         {
             "name": "",
             "topics": [
@@ -13,9 +13,9 @@
                             "title": "",
                             "time": "",
                             "originLink": "",
-                            "originAutor": "",
+                            "originAuthor": "",
                             "body": "",
-                            "readed": 0,
+                            "reded": 0,
                             "like": 0,
                             "favor": 0,
                             "tags": []

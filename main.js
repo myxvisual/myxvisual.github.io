@@ -1,1 +1,31 @@
-"use strict";function e(){a=new n.BrowserWindow({autoHideMenuBar:!0,fullscreen:!0,fullscreenable:!1,maximizable:!0}),a.loadURL(r.format({pathname:o.join(__dirname,"index.html"),protocol:"file:",slashes:!0})),a.on("closed",function(){a=null})}Object.defineProperty(exports,"__esModule",{value:!0});var n=require("electron"),o=require("path"),r=require("url"),a;n.app.on("ready",e),n.app.on("window-all-closed",function(){"darwin"!==process.platform&&n.app.quit()}),n.app.on("activate",function(){null===a&&e()});
+import * as electron from "electron";
+import * as path from "path";
+import * as url from "url";
+var win;
+function createWindow() {
+    win = new electron.BrowserWindow({
+        autoHideMenuBar: true,
+        fullscreen: true,
+        fullscreenable: false,
+        maximizable: true
+    });
+    win.loadURL(url.format({
+        pathname: path.join(__dirname, "index.html"),
+        protocol: "file:",
+        slashes: true
+    }));
+    win.on("closed", function () {
+        win = null;
+    });
+}
+electron.app.on("ready", createWindow);
+electron.app.on("window-all-closed", function () {
+    if (process.platform !== "darwin") {
+        electron.app.quit();
+    }
+});
+electron.app.on("activate", function () {
+    if (win === null) {
+        createWindow();
+    }
+});

@@ -1,4 +1,4 @@
-var vendors_prod22fadf40351c9eefddf8_lib =
+var vendors_prod_lib =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};

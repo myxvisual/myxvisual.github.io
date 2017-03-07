@@ -1,5 +1,5 @@
 {
-  "name": "vendors_prod22fadf40351c9eefddf8_lib",
+  "name": "vendors_prod_lib",
   "content": {
     "../node_modules/react/react.js": 1,
     "../node_modules/react/lib/React.js": 2,
